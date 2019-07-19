@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "credit_system", "credit_system\credit_system.vcxproj", "{F4828B78-0F75-48EC-A36B-3384F5D85C19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4828B78-0F75-48EC-A36B-3384F5D85C19}.Debug|x64.ActiveCfg = Debug|x64
+		{F4828B78-0F75-48EC-A36B-3384F5D85C19}.Debug|x64.Build.0 = Debug|x64
+		{F4828B78-0F75-48EC-A36B-3384F5D85C19}.Debug|x86.ActiveCfg = Debug|Win32
+		{F4828B78-0F75-48EC-A36B-3384F5D85C19}.Debug|x86.Build.0 = Debug|Win32
+		{F4828B78-0F75-48EC-A36B-3384F5D85C19}.Release|x64.ActiveCfg = Release|x64
+		{F4828B78-0F75-48EC-A36B-3384F5D85C19}.Release|x64.Build.0 = Release|x64
+		{F4828B78-0F75-48EC-A36B-3384F5D85C19}.Release|x86.ActiveCfg = Release|Win32
+		{F4828B78-0F75-48EC-A36B-3384F5D85C19}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4CEE60E4-AFF9-468B-BAF8-2B053DA5BAB1}
+	EndGlobalSection
+EndGlobal
