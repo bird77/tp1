@@ -17,5 +17,6 @@ void iniciar_creditos(struct Cliente* cliente); // inicializa (con valores por d
 void pagar_credito(int id, int monto); // paga parte o el total de un crédito del cliente id
 void cancelar_credito(int id, int index); // elimina uno o todos los créditos del cliente id
 int mostrar_creditos(struct Cliente *cliente); // imprime los créditos del cliente pasado como parámetro, asumiendo que existan
+int sumar_creditos(struct Cliente *cliente);
 
 #endif

@@ -15,7 +15,7 @@ void agregar_cliente(char nombre[], char apellido[], int edad, int dni, char mai
 		strcpy(cliente->apellido, apellido);
 		cliente->edad = edad;
 		cliente->dni = dni;
-		cliente->id = obtener_id(1);
+		cliente->id = obtener_nueva_id();
 		strcpy(cliente->mail, mail);
 		iniciar_creditos(cliente);
 		// cliente se transforma en la cabeza de la lista luego de que cliente->next apunte a la cabeza anterior
@@ -48,16 +48,18 @@ void pedir_datos(void)
 	printf("Cliente ingresado.\n");
 }
 
-void listar_clientes(void)
+void listar_clientes(int n)
 {
 	struct Cliente *aux = head;
 	if(aux == NULL) {
 		printf("Error: No hay clientes registrados.\n");
 		return;
 	}
-	while(aux != NULL) {
+	int count = 0;
+	while(aux != NULL && count < n) {
 		mostrar_cliente(aux);
 		aux = aux->next;
+		++count;
 	}
 }
 
@@ -113,16 +115,10 @@ void borrar_cliente(int id) // optimizar
 	}
 }
 
-int obtener_id(int id)
+int obtener_nueva_id()
 {
-	struct Cliente *aux = head;
-	if(aux == NULL) return 1; // si la lista esta vacia la id es 1
-	while(aux != NULL) {
-		if(aux->id == id)
-			return obtener_id(id + 1);
-		aux = aux->next;
-	}
-	return id;
+	if(client_count == 0) return 1; // si la lista esta vacia la id es 1
+	return head->id + 1;
 }
 
 int buscar_id(int id)

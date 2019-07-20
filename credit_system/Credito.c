@@ -20,7 +20,9 @@ void pedir_credito(int id, int dni)
 		while(1) {
 			if(!scanf("%d", &monto)) return;
 			if(monto > MAX_MONTO || monto < MIN_MONTO)
-				printf("Monto invalido, intente de nuevo.\nMontos validos: [%d-%d]\n", MIN_MONTO, MAX_MONTO);
+				printf("Error: Monto invalido, intente de nuevo.\nMontos validos: [%d-%d]\n", MIN_MONTO, MAX_MONTO);
+			else if((sumar_creditos(cliente) + monto) > MAX_MONTO)
+				printf("Error: El prestamo total no puede ser mayor a %d", MAX_MONTO);
 			else
 				break;
 		}
@@ -84,14 +86,19 @@ void cancelar_credito(int id, int index) // testear
 			return;
 		}
 		if(index == 0) {
+			int count = 0;
 			for(int i = 0; i < MAX_CREDITOS; ++i) {
-				if(aux->credito[i].monto > 0)
+				if(aux->credito[i].monto > 0) {
 					aux->credito[i].monto = 0;
+					++count;
+				}
 			}
+			printf("%d creditos cancelados con exito.\n", count);
 		}
 		else if(index >= 1 && index <= MAX_CREDITOS) {
 			if(aux->credito[index-1].monto > 0)
 				aux->credito[index-1].monto = 0;
+			printf("Credito cancelado con exito.\n");
 		}
 		else {
 			printf("Error: Indice invalido. El rango es [1-%d]\n", MAX_CREDITOS);
@@ -117,4 +124,14 @@ int mostrar_creditos(struct Cliente *cliente)
 	else {
 		return 0;
 	}
+}
+
+int sumar_creditos(struct Cliente *cliente)
+{
+	int aux = 0;
+	for(int i = 0; i < MAX_CREDITOS; ++i) {
+		if(cliente->credito[i].monto > 0)
+			aux += cliente->credito[i].monto;
+	}
+	return aux;
 }

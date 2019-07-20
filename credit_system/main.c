@@ -14,6 +14,6 @@ int main(void)
 	agregar_cliente("test4", "t4", 23, 7000, "test4@gmail.com");
 	agregar_cliente("test5", "t6", 45, 8000, "test5@gmail.com");
 	agregar_cliente("test4", "t5", 32, 9000, "test6@gmail.com");
-	menu_principal();
+	mostrar_menu(PRINCIPAL);
 	return 0;
 }
