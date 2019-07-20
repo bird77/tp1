@@ -23,7 +23,7 @@ void guardar_cliente(struct Cliente *cliente)
 	}
 }
 
-void cargar_clientes(void)
+void cargar_clientes(void) // sin terminar
 {
 	int id;
 	char nombre[24];
