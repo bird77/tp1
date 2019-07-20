@@ -71,7 +71,11 @@ void menu_cliente(void)
 			break;
 		case 2: {
 			int n = 0;
-			printf("Ingrese el numero de clientes a mostrar (min 1, max %d): ", client_count);
+			if(client_count == 0) {
+				printf("Error: No hay clientes registrados.\n");
+				break;
+			}
+			printf("Ingrese el numero de clientes a mostrar (max %d): ", client_count);
 			if(scanf("%d", &n)) {
 				if(n > client_count || n < 1) {
 					printf("Error: El numero de clientes a mostrar no puede ser menor a 1 o mayor al total de clientes (%d)\n", client_count);

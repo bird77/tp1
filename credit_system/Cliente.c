@@ -2,6 +2,7 @@
 #include <Windows.h> 
 #include <string.h>
 #include "Cliente.h"
+#include "Archivo.h"
 
 struct Cliente *head = NULL;
 int client_count = 0;
@@ -22,6 +23,7 @@ void agregar_cliente(char nombre[], char apellido[], int edad, int dni, char mai
 		cliente->next = head; 
 		head = cliente;
 		++client_count;
+		guardar_cliente(cliente);
 	}
 	else {
 		printf("Error: out of memory\n");
