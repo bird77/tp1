@@ -7,7 +7,7 @@
 struct Cliente *head = NULL;
 int client_count = 0;
 
-void agregar_cliente(char nombre[], char apellido[], int edad, int dni, char mail[])
+void agregar_cliente(char nombre[], char apellido[], int edad, int dni, char mail[], int credito_1, int credito_2, int credito_3)
 {
 	struct Cliente *cliente;
 	cliente = (struct Cliente*)malloc(sizeof(struct Cliente));
@@ -18,12 +18,13 @@ void agregar_cliente(char nombre[], char apellido[], int edad, int dni, char mai
 		cliente->dni = dni;
 		cliente->id = obtener_nueva_id();
 		strcpy(cliente->mail, mail);
-		iniciar_creditos(cliente);
+		cliente->credito[0].monto = credito_1;
+		cliente->credito[1].monto = credito_2;
+		cliente->credito[2].monto = credito_3;
 		// cliente se transforma en la cabeza de la lista luego de que cliente->next apunte a la cabeza anterior
 		cliente->next = head; 
 		head = cliente;
 		++client_count;
-		guardar_cliente(cliente);
 	}
 	else {
 		printf("Error: out of memory\n");
@@ -46,7 +47,7 @@ void pedir_datos(void)
 	if(!scanf("%d", &dni)) return;
 		printf("Mail: ");
 	if(scanf("%s", mail)) // mejorar para evitar overflow
-		agregar_cliente(nombre, apellido, edad, dni, mail);
+		agregar_cliente(nombre, apellido, edad, dni, mail, 0, 0, 0); // agrega un nuevo cliente. inicializa creditos en 0
 	printf("Cliente ingresado.\n");
 }
 
@@ -59,6 +60,7 @@ void listar_clientes(int n)
 	}
 	int count = 0;
 	while(aux != NULL && count < n) {
+		printf("%d) ", count + 1);
 		mostrar_cliente(aux);
 		aux = aux->next;
 		++count;
@@ -197,7 +199,7 @@ int buscar_edad(int edad_inicial, int edad_final)
 
 void mostrar_cliente(struct Cliente *cliente)
 {
-	printf("nombre: %s %s, edad: %d, id: %d, dni: %d\n", cliente->nombre, cliente->apellido, cliente->edad, cliente->id, cliente->dni);
+	printf("nombre: %s %s, edad: %d, id: %d, dni: %d, mail: %s\n", cliente->nombre, cliente->apellido, cliente->edad, cliente->id, cliente->dni, cliente->mail);
 	for(int i = 0; i < MAX_CREDITOS; ++i) {
 		if(cliente->credito[i].monto > 0)
 			printf("credito: %d\n", cliente->credito[i].monto);

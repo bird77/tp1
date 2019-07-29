@@ -3,7 +3,7 @@
 #include <conio.h>
 #include "Menu.h"
 #include "Cliente.h"
-
+#include "Archivo.h"
 
 void mostrar_menu(Menu menu)
 {
@@ -31,7 +31,7 @@ void menu_principal(void)
 	int salir = 0;
 	while(!salir) {
 		system("cls");
-		printf("1) Clientes\n2) Creditos\n3) Salir\n");
+		printf("1) Clientes\n2) Creditos\n3) Guardar y salir\n");
 		int opcion = 0;
 		if(scanf("%d", &opcion) < 1) {
 			printf("Entrada invalida.\n");
@@ -45,6 +45,7 @@ void menu_principal(void)
 			mostrar_menu(CREDITO);
 			break;
 		case 3:
+			guardar_clientes();
 			salir = 1;
 			system("pause");
 			break;
@@ -58,7 +59,7 @@ void menu_principal(void)
 void menu_cliente(void)
 {
 	int volver = 0;
-	printf("1) Registrar cliente\n2) Mostrar clientes\n3) Eliminar cliente\n4) Buscar cliente\n5) Volver al menu principal\n");
+	printf("1) Registrar cliente\n2) Mostrar clientes\n3) Eliminar cliente\n4) Buscar cliente\n5) Guardar\n6) Volver al menu principal\n");
 	while(!volver) {
 		int opcion = 0;
 		if(scanf("%d", &opcion) < 1) {
@@ -96,6 +97,9 @@ void menu_cliente(void)
 			menu_busqueda_cliente();
 			break;
 		case 5:
+			guardar_clientes();
+			break;
+		case 6:
 			volver = 1; // detiene el loop del menú de clientes y retorna automáticamente al menú principal
 			break;
 		default:
@@ -108,14 +112,14 @@ void menu_cliente(void)
 void menu_credito(void)
 {
 	int volver = 0;
-	printf("1) Pedir credito\n2) Pagar credito\n3) Cancelar credito\n4) Volver al menu principal\n");
+	printf("1) Pedir credito\n2) Pagar credito\n3) Cancelar credito\n4) Guardar\n5) Volver al menu principal\n");
 	while(!volver) {
 		int opcion = 0;
 		if(!scanf("%d", &opcion)) return;
 		switch(opcion) {
 		case 1: {
 			int id, dni;
-			printf("Ingrese la ID: ");
+			printf("Ingrese el mail: ");
 			if(scanf("%d", &id))
 				printf("Ingrese el DNI: ");
 			if(scanf("%d", &dni))
@@ -141,6 +145,9 @@ void menu_credito(void)
 			break;
 		}
 		case 4:
+			guardar_clientes();
+			break;
+		case 5:
 			volver = 1;
 			break;
 		default:

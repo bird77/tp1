@@ -37,14 +37,6 @@ void pedir_credito(int id, int dni)
 	}
 }
 
-void iniciar_creditos(struct Cliente *cliente)
-{
-	for(int i = 0; i < MAX_CREDITOS; ++i) {
-		cliente->credito[i].monto = 0;
-	}
-	cliente->creditos_usados = 0;
-}
-
 void pagar_credito(int id, int monto)
 {
 	struct Cliente *aux = NULL;

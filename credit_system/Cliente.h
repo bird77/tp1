@@ -23,11 +23,11 @@ int buscar_edad(int edad_inicial, int edad_final);
 void mostrar_cliente(struct Cliente *cliente);
 
 void pedir_datos(void);	// pide al usuario que ingrese un nuevo cliente
-void agregar_cliente(char nombre[], char apellido[], int edad, int dni, char mail[]); // agrega un nuevo cliente a la lista enlazada
+void agregar_cliente(char nombre[], char apellido[], int edad, int dni, char mail[], int credito_1, int credito_2, int credito_3); // agrega un nuevo cliente a la lista enlazada
 void listar_clientes(int n); // muestra la lista de clientes desde 0 a n
 void borrar_cliente(int id); // elimina un cliente del sistema (dada la id), liberando la memoria reservada por malloc
 struct Cliente *buscar_cliente(int id); // busca un usuario en el que id y dni coincidan y retorna NULL si no lo encuentra
-int obtener_nueva_id(); // obtiene una id que no esté en uso para nuevos clientes -- OPTIMIZAR O REWORKEAR
+int obtener_nueva_id(); // obtiene una id que no esté en uso para nuevos clientes
 int buscar_id(int id); // recorre la lista enlazada buscando una id de cliente que coincida con el parámetro id. retorna 0 en caso de error. -- cambiar por buscar_cliente
 
 #endif
